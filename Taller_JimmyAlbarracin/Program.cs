@@ -1,7 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Data;
+using Taller_JimmyAlbarracin.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Taller_JimmyAlbarracinContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Taller_JimmyAlbarracinContext") ?? throw new InvalidOperationException("Connection string 'Taller_JimmyAlbarracinContext' not found.")));
+builder.Services.AddDbContext<BurgerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BurgerContext") ?? throw new InvalidOperationException("Connection string 'BurgerContext' not found.")));
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Context") ?? throw new InvalidOperationException("Connection string 'Context' not found.")));
 

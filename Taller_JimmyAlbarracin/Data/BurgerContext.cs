@@ -5,17 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Taller_JimmyAlbarracin.Models;
 
-namespace Data
-{
-    public class Context : DbContext
+    public class BurgerContext : DbContext
     {
-        public Context (DbContextOptions<Context> options)
+        public BurgerContext (DbContextOptions<BurgerContext> options)
             : base(options)
         {
         }
 
         public DbSet<Taller_JimmyAlbarracin.Models.Burger> Burger { get; set; } = default!;
-        public DbSet<Taller_JimmyAlbarracin.Models.Promo> Promo { get; set; } = default!;
-
     }
-}
